@@ -424,5 +424,5 @@ export const footer = {
   wordmark: "Plated",
   welcome: "Welcome you",
   copyright: "© 2026 Plated.",
-  credit: "Design by Anvics",
+  credit: "Design by HusterX",
 };
