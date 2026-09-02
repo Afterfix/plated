@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+    /* clip (not hidden) — hidden here would break position:sticky on the panels */
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-size: 18px;
+    width: 100%;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: #d43539;
+    color: #efeee9;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  /* the deep-red vertical-stripe surface used by hero / nav / footer */
+  .stripes-red {
+    background-color: #9c1119;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.5) 0 6px,
+      transparent 10px 32px
+    );
+  }
+  /* hero surface — matches the logo: solid warm red + a faint concentric
+     "plate rim" and a soft light bloom / edge vignette */
+  .hero-bg {
+    background-color: #7c1712;
+  }
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        130% 95% at 50% 30%,
+        rgba(213, 53, 47, 0.35),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle 500px at 50% 52%,
+        transparent 0 300px,
+        rgba(240, 216, 188, 0.14) 302px 305px,
+        transparent 308px 372px,
+        rgba(240, 216, 188, 0.22) 375px 379px,
+        transparent 382px
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.28),
+        rgba(0, 0, 0, 0) 22%,
+        rgba(0, 0, 0, 0) 62%,
+        rgba(0, 0, 0, 0.4)
+      );
+  }
+
+  /* red cursive eyebrow */
+  .eyebrow {
+    @apply inline-block font-script text-3xl leading-none text-chili sm:text-4xl;
+  }
+
+  /* giant holey Rubik Moonrocks title */
+  .holey-title {
+    @apply font-holey uppercase text-ink;
+    font-size: clamp(2.6rem, 8.5vw, 7.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+  }
+
+  .holey-hero {
+    @apply font-holey uppercase;
+    font-size: clamp(4rem, 20vw, 17rem);
+    line-height: 0.8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-display text-lg
+      uppercase tracking-[0.06em] transition duration-200 ease-out;
+  }
+  .btn-primary {
+    @apply btn bg-chili text-cream hover:-translate-y-0.5 hover:bg-chili-deep hover:shadow-xl hover:shadow-chili/25;
+  }
+  .btn-ink {
+    @apply btn bg-ink text-cream hover:-translate-y-0.5 hover:bg-black;
+  }
+  .btn-cream {
+    @apply btn bg-cream text-ink hover:-translate-y-0.5;
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-ink/15 bg-white/70 px-5 py-4 text-base text-ink
+      placeholder:text-muted/60 outline-none transition focus:border-chili focus:bg-white
+      focus:ring-2 focus:ring-chili/15;
+  }
+
+  /* dashed red-outline card (Why-us + Chefs + Contact form) */
+  .card-dashed {
+    @apply rounded-[26px] border-2 border-dashed border-chili/55 bg-white/45;
+  }
+
+  /* stacked-scroll panels: each pins, the next rises up and layers over it */
+  .panel {
+    @apply relative w-full;
+  }
+  .panel-cover {
+    @apply rounded-t-[28px] lg:rounded-t-[52px];
+  }
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+  }
+  /* every section scrolls inside itself when its content is taller than the
+     screen; when it fits it just centres. Scroll chains to the page once the
+     inner scroll bottoms out, so the stacked-panel reveal keeps working. */
+  .panel-scroll {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 53, 57, 0.55) transparent;
+  }
+  .panel-scroll::-webkit-scrollbar {
+    width: 9px;
+  }
+  .panel-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .panel-scroll::-webkit-scrollbar-thumb {
+    background: rgba(212, 53, 57, 0.5);
+    border-radius: 999px;
+  }
+  .panel-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 53, 57, 0.75);
+  }
+  /* the hero + the disc panel must not clip (floaters / overhanging disc) */
+  .panel-hero,
+  .panel-overhang {
+    overflow: visible;
+  }
+  .panel-hero .panel-scroll,
+  .panel-overhang .panel-scroll {
+    overflow: visible;
+  }
+  .panel-cover {
+    /* a short hold on the previous section before this one rises to cover it */
+    margin-top: 10vh;
+    box-shadow:
+      0 -1px 0 1px rgba(18, 17, 17, 0.04),
+      0 -26px 46px -18px rgba(18, 17, 17, 0.5);
+  }
+  /* the disc panel sits right against the hero (no hold above it) */
+  .panel-overhang {
+    margin-top: 0;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-down {
+    transform: translateY(-40px);
+  }
+  .reveal-left {
+    transform: translateX(-46px);
+  }
+  .reveal-right {
+    transform: translateX(46px);
+  }
+  .reveal-down.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible {
+    transform: none;
+  }
+
+  .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.6em) scale(1.7);
+    transform-origin: bottom;
+  }
+  .word.play {
+    animation: pop 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--word-delay, 0ms);
+  }
+  @keyframes pop {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  }
+
+  /* heading produce garnish: rotate + settle once as the heading enters */
+  .garnish {
+    opacity: 0;
+    transform: rotate(-46deg) scale(0.45);
+    transition:
+      opacity 0.6s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--garnish-delay, 120ms);
+  }
+  .reveal.is-visible .garnish {
+    opacity: 1;
+    transform: rotate(var(--garnish-settle, -12deg)) scale(1);
+  }
+
+  /* outlined display words for the marquee bands */
+  .word-stroke {
+    color: transparent;
+    -webkit-text-stroke: 2px #d43539;
+  }
+
+  /* thin themed scrollbar for the menu list when it overflows */
+  .menu-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 53, 57, 0.6) transparent;
+  }
+  .menu-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  .menu-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .menu-scroll::-webkit-scrollbar-thumb {
+    background: rgba(212, 53, 57, 0.55);
+    border-radius: 999px;
+  }
+  .menu-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 53, 57, 0.8);
+  }
+}
+
+/* 3D flip used by the restaurant image carousel */
+@keyframes flip-in {
+  from {
+    transform: perspective(1400px) rotateX(-82deg);
+    opacity: 0.15;
+  }
+  to {
+    transform: perspective(1400px) rotateX(0);
+    opacity: 1;
+  }
+}
+.flip-in {
+  transform-origin: top center;
+  animation: flip-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-down,
+  .reveal-left,
+  .reveal-right,
+  .word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  [class*='animate-'] {
+    animation: none !important;
+  }
+}
