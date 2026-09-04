@@ -1,31 +1,51 @@
 // ---------------------------------------------------------------------------
-// All copy + data for the Plated template. Edit here to rebrand.
-// Images are bundled from src/assets — swap the files (or these imports)
-// for your own photos. Plated dishes read best as round, transparent PNGs.
+// Saffron Mandi — every string and image the site renders. Edit here to change
+// the site; no copy lives inside the components.
+//
+// PROVENANCE: compiled 3 Sep 2026 from public listings only (Google Business
+// Profiles, Zomato/District, Instagram @saffron_mandi). Nothing below came from
+// the business. Confirm before launch — open items:
+//   • MENU PRICES — no public price list is readable, so no prices are shown.
+//   • Alanallur phone + opening hours — not published anywhere.
+//   • Ottappalam phone (…425 on District vs …426 on Google) and hours conflict.
+//   • Email address and a WhatsApp ordering number.
+//   • Whether the Kondotty "Saffron Mandhi" outlet belongs to this chain.
+//   • IMAGES — every photo below is placeholder art shipped with the template.
+//     The brand's own Instagram grid is the only legitimate source available;
+//     get originals or written permission before going live.
+//   • TESTIMONIALS + TEAM — placeholder people. See the notes on those blocks.
 // ---------------------------------------------------------------------------
+
+import logoMark from "../assets/saffron-logo.jpg";
 
 import coriander from "../assets/coriander-leaves.avif";
 import chiliLeft from "../assets/left-chilly.avif";
 import chiliRight from "../assets/right-chilly.avif";
-
-import heroBowl from "../assets/food1.avif";
-import shaway from "../assets/shaway.png";
-import infused from "../assets/infused.png";
-import shawarma from "../assets/lamp shawarma.png";
-import fried from "../assets/fried chicken.png";
-import broasted from "../assets/broasted.png";
-import buttuam from "../assets/buttuam.png";
-import imgDal from "../assets/dal.avif";
-import imgMakhani from "../assets/makhani.avif";
-import imgGobi from "../assets/gobi1.avif";
-import imgPulao from "../assets/pulav.avif";
-import imgTandooriPaneer from "../assets/tandoori-paneer.avif";
-import imgTandooriRoti from "../assets/tandoori-roti.avif";
 import vepp from "../assets/vepp.avif";
 
-import restaurant1 from "../assets/plated-makhmal.jpg";
-import restaurant2 from "../assets/plated-crunch.jpg";
-import restaurant3 from "../assets/plated-spicy.jpg";
+// Dish art — matched to dish names
+import imgChickenMandi from "../assets/chicken mandi.png";
+import imgBeefMandi from "../assets/beef mandi.png";
+import imgMuttonMandi from "../assets/motton mandi.png";
+import imgKanthariMandi from "../assets/Kanthari mandi.png";
+import imgPeriPeriMandi from "../assets/periperi mandi.png";
+import imgCreamy from "../assets/creamy.png";
+import imgHoneyAlfaham from "../assets/honey alfaham.png";
+import imgBroasted from "../assets/broasted.png";
+import imgButtuam from "../assets/buttuam.png";
+import imgFriedChicken from "../assets/fried chicken.png";
+import imgLampShawarma from "../assets/lamp shawarma.png";
+import imgAlfaham from "../assets/alfahm mandi.png";
+import shaway from "../assets/shaway.png";
+import infused from "../assets/infused.png";
+import imgRice from "../assets/pulav.avif";
+import imgMasala from "../assets/makhani.avif";
+import imgPlatter from "../assets/food1.avif";
+import imgGrill from "../assets/jamaican.jpg";
+
+import restaurant1 from "../assets/restaurant 1.png";
+import restaurant2 from "../assets/restaurant 2.png";
+import restaurant3 from "../assets/restaurant 3.png";
 
 import avatarOlivia from "../assets/olivia.avif";
 import avatarDaniel from "../assets/danial.avif";
@@ -42,10 +62,16 @@ import chef4 from "../assets/cook4.avif";
 import contactChef from "../assets/contact-us.avif";
 
 export const brand = {
-  name: "Plated",
-  phone: "+00 00000000",
-  phoneHref: "tel:+000000000000",
-  email: "book@plated.com",
+  name: "Saffron Mandi",
+  tagline: "Experience the true Arabic Mandi",
+  // The gold-on-bronze roundel. It's what the black-and-gold palette is keyed
+  // to — swap this file and the theme should be re-checked against it.
+  logo: logoMark,
+  // Mannarkkad — the flagship and the most-reviewed branch.
+  phone: "+91 97450 00462",
+  phoneHref: "tel:+919745000462",
+  email: null, // the business publishes no email address anywhere
+  instagram: "https://www.instagram.com/saffron_mandi/",
 };
 
 export const navLinks = [
@@ -53,18 +79,18 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Restaurant", href: "#restaurant" },
   { label: "Menu", href: "#menu" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Reviews", href: "#testimonials" },
   { label: "Why us", href: "#why-choose" },
   { label: "Our Team", href: "#best-chef" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const hero = {
-  hello: "Welcome to",
-  title: "Plated",
-  sub: "Kerala’s First Infused Chicken Brand.",
-  tags: "Infused Specials | Combos | Fried chicken",
-  bowl: infused, // curry bowl that slowly rotates behind the wordmark
+  hello: "Mandi", // yellow script line, sits above the big wordmark
+  title: "Saffron", // rendered letter-by-letter at 20vw — keep it short
+  sub: "Experience the true Arabic Mandi.",
+  tags: "Kuzhi Mandhi | Al Faham | Charcoal Grills | 4 branches in Kerala",
+  bowl: imgAlfaham, // platter that slowly rotates behind the wordmark
   scrollText: "SCROLL DOWN • SCROLL DOWN ",
   // garnish images bobbing up and down around the hero
   floaters: [
@@ -104,229 +130,282 @@ export const popular = {
   eyebrow: "Popular taste",
   title: "Must try dishes",
   garnish: [coriander, chiliRight],
+  // Grounded in what customers actually praise in public reviews: the smoky
+  // rice, the tender beef, and the size of the portions.
   blurb:
-    "Our most-loved dishes, freshly prepared with vibrant vegetables, aromatic spices, and rich flavours. Discover the Plated favourites our guests keep coming back for.",
+    "Slow-cooked over charcoal in the traditional kuzhi pit — long-grain rice steeped in the meat's own stock, spiced whole and served on a platter big enough to share.",
   dishes: [
     {
-      name: "Infused Chicken",
-      rating: "5.0",
+      name: "Chicken Mandhi",
       badge: "HOT",
-      desc: "Our signature — chicken deep-infused with a house spice blend, then flame-grilled.",
-      image: infused,
+      desc: "The one everyone orders. Whole spiced chicken over smoky mandhi rice, with salad, mayo and chutney.",
+      image: imgChickenMandi,
     },
     {
-      name: "Shaway Chicken",
-      rating: "5.0",
+      name: "Beef Mandhi",
       badge: null,
-      desc: "Whole chicken slow-roasted over open coals until smoky and tender.",
-      image: shaway,
+      desc: "Slow-cooked till it gives way at the fork, laid over rice that has taken on all of its stock.",
+      image: imgBeefMandi,
     },
     {
-      name: "Fried Chicken",
-      rating: "5.0",
+      name: "Mutton Mandhi",
       badge: null,
-      desc: "Buttermilk-brined, hand-breaded and fried golden with a proper crunch.",
-      image: fried,
+      desc: "Bone-in mutton cooked low over coals — deeper, richer, and worth the wait.",
+      image: imgMuttonMandi,
     },
     {
-      name: "Lamp Shawarma",
-      rating: "5.0",
-      badge: "NEW",
-      desc: "Spiced meat stacked and spit-roasted, carved thin with garlic toum and pickles.",
-      image: shawarma,
+      name: "Al Faham Mandhi",
+      badge: null,
+      desc: "Charcoal-grilled al faham chicken served on the mandhi rice, with a squeeze of lime.",
+      image: imgAlfaham,
     },
   ],
 };
 
 export const restaurant = {
   eyebrow: "Our restaurant",
-  title: "A place for good food",
+  title: "Room for the whole family",
   garnish: [coriander, chiliRight],
   blurb:
-    "From the first bite to the last conversation, Plated is made for good food, warm moments, and memorable experiences.",
+    "Air-conditioned family dining rooms, free parking at the door, and a kitchen that cooks in batches through the day — from 11 in the morning until close to midnight.",
   // 3D flip carousel — cycles on a timer
   images: [restaurant1, restaurant2, restaurant3],
 };
 
 export const menu = {
   eyebrow: "Full menu",
-  title: "Flavour Picks",
+  title: "The mandhi board",
   garnish: [chiliRight, coriander],
   blurb:
-    "A delicious selection of Arabic favourites, crafted with fresh ingredients and our signature flavours.",
+    "Every mandhi comes on the same charcoal-steamed rice — pick your meat, then pick how it is finished. Salad, mayonnaise and tomato chutney come with the platter, and the sulaimani at the end is on us.",
+  // Reconstructed from item names in public reviews and aggregator listings.
+  // Confirm the full list, the spellings and the prices with the owner.
+  note: "Prices and daily specials vary by branch — call your nearest kitchen to confirm.",
   items: [
     {
-      name: "Infused Chicken",
+      name: "Chicken Mandhi",
       badge: null,
-      desc: "Our signature infused chicken, marinated deep and flame-grilled till juicy.",
-      image: infused,
+      desc: "Whole spiced chicken steamed over the rice in the kuzhi pit.",
+      image: imgChickenMandi,
     },
     {
-      name: "Fried Chicken",
+      name: "Beef Mandhi",
       badge: null,
-      desc: "Crisp golden crust, juicy inside — brined and double-fried for extra crunch.",
-      image: fried,
+      desc: "Slow-cooked beef, tender enough to pull apart, over stock-steeped rice.",
+      image: imgBeefMandi,
     },
     {
-      name: "Shaway Chicken",
+      name: "Grilled Beef Mandhi",
       badge: null,
-      desc: "Charcoal-roasted whole chicken — smoky, spiced and fall-off-the-bone tender.",
-      image: shaway,
+      desc: "The same beef finished over open coals for a charred, smoky edge.",
+      image: imgBeefMandi,
     },
     {
-      name: "Buttuam Chicken",
+      name: "Mutton Mandhi",
       badge: null,
-      desc: "Char-grilled chicken glazed in a buttery, mildly spiced house sauce.",
-      image: buttuam,
+      desc: "Bone-in mutton cooked low and long — the richest platter on the board.",
+      image: imgMuttonMandi,
     },
     {
-      name: "Lamp Shawarma",
+      name: "Al Faham Mandhi",
       badge: null,
-      desc: "Slow-roasted spiced meat shaved thin, wrapped with toum, fries and pickles.",
-      image: shawarma,
+      desc: "Charcoal-grilled al faham chicken, crisp outside, served over mandhi rice.",
+      image: imgAlfaham,
     },
     {
-      name: "Chicken Shawarma",
+      name: "Chicken Pollichathu Mandhi",
       badge: null,
-      desc: "Marinated chicken off the spit, rolled with garlic sauce, fries and pickles.",
-      image: shawarma,
+      desc: "Masala-coated chicken roasted Kerala-style, plated on the rice.",
+      image: imgAlfaham,
+    },
+    {
+      name: "Kanthari Mandhi",
+      badge: null,
+      desc: "Finished with bird's-eye chilli. Sharp, bright heat — chicken or beef.",
+      image: imgKanthariMandi,
+    },
+    {
+      name: "Peri Peri Mandhi",
+      badge: null,
+      desc: "Grilled and glazed in peri peri. Chicken or beef.",
+      image: imgPeriPeriMandi,
+    },
+    {
+      name: "Jallikettu",
+      badge: null,
+      desc: "The heaviest-spiced finish on the board, for the extra-chutney crowd.",
+      image: imgAlfaham,
+    },
+    {
+      name: "Honey Chilli",
+      badge: null,
+      desc: "Sweet and hot in the same bite — the mildest way onto the mandhi board.",
+      image: imgHoneyAlfaham,
+    },
+    {
+      name: "Creamy",
+      badge: null,
+      desc: "A gentle, mild finish. What the table orders for the children.",
+      image: imgCreamy,
+    },
+    {
+      name: "Schezwan",
+      badge: null,
+      desc: "Indo-Chinese heat over the mandhi rice, if that is the mood.",
+      image: imgChickenMandi,
     },
   ],
 };
 
 export const about = {
-  eyebrow: "About Plated",
-  ring: ["Authentic", "Food"],
-  title: "Best Arabian food",
+  eyebrow: "About Saffron Mandi",
+  ring: ["Arabic", "Mandi"],
+  title: "Cooked in the pit",
   garnish: [coriander, chiliLeft],
   blurb:
-    "All about fresh flavours you can trust. Plated brings together quality ingredients, vibrant recipes, and a passion for great Arabic food. Our mission is simple — serve fresh, delicious meals that make every visit worth remembering.",
-  image: imgPulao,
+    "Mandi is a Yemeni method, not a recipe. The meat hangs over a covered pit of burning charcoal and the rice sits beneath it, so every drop that renders down seasons the grain. Nothing is rushed and nothing is fried to get there — that slow smoke is the whole dish. We cook it that way across Palakkad and Kottayam, and the platters are built to be shared, with the rice refilled for as long as the table is still eating.",
+  image: imgRice,
 };
 
+// PLACEHOLDER — the quotes below paraphrase themes that recur across the
+// chain's public Google reviews, but the names and faces are the template's
+// stock people. Replace with real, permissioned reviews (or an embedded Google
+// reviews widget) before this goes live.
 export const testimonials = {
-  eyebrow: "Testiminials",
-  title: "Our client love it",
+  eyebrow: "Reviews",
+  title: "What the table says",
   garnish: [coriander, chiliRight],
   blurb:
-    "Great food speaks for itself. From unforgettable flavours to warm moments around the table, discover why our guests love Plated and keep coming back for more.",
+    "Guests come back for the rice and stay for the size of the platter. Here is what they tell us most often.",
   reviews: [
     {
       quote:
-        "Plated brings fresh ingredients, bold flavours, and beautifully prepared dishes to every meal. It has quickly become our favourite place to eat.",
-      name: "Olivia Carter",
-      role: "Food Blogger",
+        "The rice is the thing. It reaches the table smelling of smoke and whole spice, and it tastes like it sat under the meat the entire time — because it did.",
+      name: "Placeholder review 1",
+      role: "Replace before launch",
       avatar: avatarOlivia,
     },
     {
       quote:
-        "The flavours at Plated are simply wonderful. Every dish feels fresh, comforting, and thoughtfully prepared, making every visit a delicious experience.",
-      name: "Daniel Brooks",
-      role: "Regular Guest",
+        "We ordered the beef mandhi for four and could not finish it. They kept offering more rice, and nobody at the table paid for a second plate.",
+      name: "Placeholder review 2",
+      role: "Replace before launch",
       avatar: avatarDaniel,
     },
     {
       quote:
-        "From the first bite to the last, Plated never disappoints. The food is flavourful, fresh, and full of character. We always leave happy and satisfied.",
-      name: "Sophia Bennett",
-      role: "Food Enthusiast",
+        "The beef falls apart without a knife. That is not something you get right by accident, and it was the same on our third visit as on our first.",
+      name: "Placeholder review 3",
+      role: "Replace before launch",
       avatar: avatarSophia,
     },
     {
       quote:
-        "Plated is the perfect place for delicious Arabic food. The menu offers wonderful variety, generous portions, and flavours that keep us coming back.",
-      name: "Ethan Mitchell",
-      role: "Restaurant Reviewer",
+        "A sulaimani turns up at the end without anyone asking. Small thing, but it is why we sit for another twenty minutes instead of leaving.",
+      name: "Placeholder review 4",
+      role: "Replace before launch",
       avatar: avatarEthan,
     },
     {
       quote:
-        "I love the warmth and freshness at Plated. Every meal is prepared with care, and the rich flavours make even a simple lunch feel truly special.",
-      name: "Mia Anderson",
-      role: "Lifestyle Blogger",
+        "Parking outside, air conditioning inside, clean washrooms, and staff who actually check on you. With a family of seven, that decides where we eat.",
+      name: "Placeholder review 5",
+      role: "Replace before launch",
       avatar: avatarMia,
     },
     {
       quote:
-        "Great food, friendly service, and a welcoming atmosphere make Plated stand out. It is our go-to place whenever we want something fresh and delicious.",
-      name: "James Wilson",
-      role: "Local Food Lover",
+        "For what a full platter costs, feeding four people this well is hard to beat anywhere near Mannarkkad.",
+      name: "Placeholder review 6",
+      role: "Replace before launch",
       avatar: avatarJames,
     },
   ],
-  ratings: ["Excellent", "Good", "Amazing", "Very good", "Decent"],
+  ratings: ["Smoky", "Generous", "Tender", "Worth it", "Shareable"],
 };
 
 export const whyChoose = {
   eyebrow: "Why choose us",
-  title: "We are known",
+  title: "What we do well",
   garnish: [coriander, chiliLeft],
+  // Deliberately silent about speed — waits at peak hours are the most common
+  // complaint in public reviews, so the copy does not promise otherwise.
   blurb:
-    "Simple ingredients. Honest cooking. Big flavour. That’s what makes Plated special.",
-  marqueeWords: ["Excellent", "Good", "Amazing", "Fresh", "Honest", "Tasty"],
+    "Charcoal, whole spice, and portions built for a table. Cooked in batches through the day, so ask for the next one out of the pit.",
+  marqueeWords: [
+    "Mandhi",
+    "Al Faham",
+    "Charcoal",
+    "Kuzhi",
+    "Arabic",
+    "Shareable",
+  ],
   features: [
     {
       icon: "spoon",
-      title: "Always serve fresh food",
-      desc: "Perfectly portioned ingredients.",
-    },
-    {
-      icon: "thumb",
-      title: "Maintaining the quality of food",
-      desc: "Standardized food recipes for menu.",
-    },
-    {
-      icon: "hat",
-      title: "We have popular masterchef",
-      desc: "The patient staff reflects the style.",
-    },
-    {
-      icon: "music",
-      title: "Best live music restaurants",
-      desc: "Beautiful natural & serene ambience.",
+      title: "Cooked in a charcoal kuzhi pit",
+      desc: "The traditional method, not an oven shortcut.",
     },
     {
       icon: "bowl",
-      title: "Delicious food recipes",
-      desc: "Best crust with this good recipe.",
+      title: "Rice refills at the table",
+      desc: "Keep eating — the rice keeps coming.",
+    },
+    {
+      icon: "thumb",
+      title: "Platters built to share",
+      desc: "One order comfortably feeds three or four.",
     },
     {
       icon: "cloche",
-      title: "Wonderful dining experience",
-      desc: "A memorable dining atmosphere.",
+      title: "Sulaimani on the house",
+      desc: "Black tea to finish, always complimentary.",
+    },
+    {
+      icon: "music",
+      title: "AC family dining rooms",
+      desc: "Room for large groups, free parking outside.",
+    },
+    {
+      icon: "hat",
+      title: "Four branches across Kerala",
+      desc: "Mannarkkad, Ottappalam, Alanallur, Kottayam.",
     },
   ],
 };
 
+// PLACEHOLDER — nothing about the kitchen team is public. Either get real
+// names, roles and photographs from the owner, or drop this section from the
+// page by removing `Chefs` from the `middle` array in src/App.jsx.
 export const chefs = {
   eyebrow: "Meet our Team",
-  title: "People behind flavour",
+  title: "People at the pit",
   garnish: [chiliRight, coriander],
   blurb:
-    "Meet the passionate chefs who bring creativity, experience and a love for food to every Plated plate.",
+    "Master pitmasters and chefs bringing authentic Yemeni charcoal mandi to your table across Kerala.",
   people: [
     {
-      name: "John Richards",
-      cuisine: "Indian Cuisine",
-      bio: "A passionate Indian chef known for bold spices, traditional recipes, and modern twists on classic Arabic dishes. He brings authentic Indian flavors to every plate with a fresh, contemporary approach.",
+      name: "Chef Rashid",
+      cuisine: "Head Pitmaster",
+      bio: "Over 15 years perfecting traditional Yemeni kuzhi mandi and slow-cooked pit charcoal meats.",
       photo: chef1,
     },
     {
-      name: "Marta Warner",
-      cuisine: "Italian Cuisine",
-      bio: "A creative Italian chef who brings authentic flavors, fresh ingredients, and a contemporary touch to every dish. Her cooking celebrates the simplicity, warmth, and richness of classic Italian cuisine.",
+      name: "Chef Tariq",
+      cuisine: "Mandi Specialist",
+      bio: "Master of stock-steeped long grain basmati rice and secret aromatic Arabic spice blends.",
       photo: chef2,
     },
     {
-      name: "Lane Ferrari",
-      cuisine: "France Cuisine",
-      bio: "A refined French chef specializing in elegant presentation, delicate flavors, and beautifully crafted culinary experiences. He combines traditional French techniques with a modern sense of creativity and precision.",
+      name: "Chef Salim",
+      cuisine: "Charcoal Grill Master",
+      bio: "Specializing in Al Faham, Peri Peri, and open-flame charcoal grilled chicken & beef.",
       photo: chef3,
     },
     {
-      name: "Antony Tylor",
-      cuisine: "Thailand Cuisine",
-      bio: "A vibrant Thai cuisine specialist who blends aromatic herbs, fresh ingredients, and the perfect balance of sweet, sour, spicy, and savory flavors. His dishes capture the bold, fresh character of Thailand in every bite.",
+      name: "Chef Bilal",
+      cuisine: "Kitchen Supervisor",
+      bio: "Ensuring every single platter reaches your table piping hot, fresh and packed with flavor.",
       photo: chef4,
     },
   ],
@@ -334,12 +413,12 @@ export const chefs = {
 
 export const contact = {
   eyebrow: "Contact us",
-  title: "Ready to help you!",
+  title: "Find your branch",
   garnish: [coriander, chiliRight],
   blurb:
-    "Have a question, want to make a reservation, or simply craving something delicious? We’re here to help.",
+    "Booking a table, ordering a party tray, or asking about a franchise — pick the branch nearest you and the message goes straight to that kitchen.",
   note: "Pick a branch above — your message opens a WhatsApp chat with that team.",
-  scribble: "We cook with love and reply with care!",
+  scribble: "Cooked slow, served generous!",
   image: contactChef,
   fields: [
     { name: "name", label: "Name", type: "text", placeholder: "Type name" },
@@ -351,78 +430,80 @@ export const contact = {
       placeholder: "Type mobile number",
     },
   ],
-  branchesTitle: "5 branches across Kerala",
+  branchesTitle: "4 branches across Kerala",
+  // NAP data from each branch's Google Business Profile. `rating` is left off
+  // on purpose — the published Google scores are not ours to reprint, and the
+  // schema markup in index.html omits aggregateRating for the same reason.
   branches: [
     {
-      name: "Plated Kaloor",
-      area: "JLN Stadium Outlets, Kochi",
-      rating: "4.4",
-      note: "Fusion food, outdoor stadium vibes, Tuscan Blaze rice plates.",
-      phone: "+91 81294 30421",
+      name: "Mannarkkad",
+      area: "Kunthipuzha Road, Kunthipuzha, Palakkad 678583",
+      note: "The flagship. Between MES Kalladi College and the Kunthipuzha bridge, with its own parking lot.",
+      hours: "11:00 AM – 11:30 PM daily",
+      phone: "+91 97450 00462",
+      maps: "https://maps.google.com/?q=10.9903908,76.441986",
     },
     {
-      name: "Plated Trivandrum",
-      area: "Panavila Junction, Thycaud",
-      rating: "4.3",
-      note: "Beautiful wall drawings, classic creamy chicken, crunchy wraps.",
-      phone: "+91 87144 78718",
+      name: "Ottappalam",
+      area: "Door 24/86-2, East Ottappalam, Palakkad 679101",
+      note: "Indoor seating for lunch and dinner, with home delivery and takeaway.",
+      hours: "11:00 AM – 11:30 PM daily", // TODO: District lists 11:30 AM – 11:00 PM
+      phone: "+91 75940 00426", // TODO: District lists …425 — confirm which
+      maps: "https://maps.google.com/?q=10.7735537,76.3874567",
     },
     {
-      name: "Plated Vennala",
-      area: "Oasis Building, Chakkaraparambu",
-      rating: "4.2",
-      note: "Large two-story family layout, Makhmal Mashwi grilled dishes.",
-      phone: "+91 77363 34443",
+      name: "Alanallur",
+      area: "Mannarkkad Road, opposite the Indian Oil pump, Palakkad 678601",
+      note: "Our newest kitchen, on the Mannarkkad road.",
+      hours: null, // TODO: not published — ask the owner
+      phone: null, // TODO: not published — ask the owner
+      maps: "https://maps.google.com/?q=11.007173,76.3511714",
     },
     {
-      name: "Plated Kottayam",
-      area: "Kottayam–Kumily Road (NH 183)",
-      rating: "4.1",
-      note: "Intimate boutique seating, infused chicken, premium broasted chicken.",
-      phone: "+91 90743 15031",
-    },
-    {
-      name: "Plated Pathanamthitta",
-      area: "Pathanamthitta Ring Road",
-      rating: "3.9",
-      note: "Casual fast-food hub, distinct Al Faham, dynamite chicken.",
-      phone: "+91 87147 79369",
+      name: "Kottayam",
+      area: "MC Road, Nagampadam, Kottayam 686006",
+      note: "On the MC Road at Nagampadam — the branch for central Kerala.",
+      hours: "11:30 AM – 11:30 PM daily",
+      phone: "+91 89430 00219",
+      maps: "https://maps.google.com/?q=9.5999475,76.5303995",
     },
   ],
 };
 
 export const footer = {
   blurb:
-    "Plated brings together quality ingredients, vibrant recipes, and a passion for great Arabic food.",
+    "Arabic mandi cooked the traditional way over charcoal, served across four kitchens in Palakkad and Kottayam.",
   columns: [
     { title: "Link", links: navLinks },
     {
       title: "Need help",
       links: [
-        { label: "Book table", href: "#contact" },
+        { label: "Book a table", href: "#contact" },
         { label: brand.phone, href: brand.phoneHref },
       ],
     },
     {
-      title: "Need support?",
+      title: "Order in",
       links: [
-        { label: "Email us at", href: `mailto:${brand.email}` },
-        { label: brand.email, href: `mailto:${brand.email}` },
+        {
+          label: "Zomato",
+          href: "https://www.zomato.com/mannarkkad/saffron-mandi-mannarkkad-locality",
+        },
+        {
+          label: "Swiggy",
+          href: "https://www.swiggy.com/restaurants/rest1096717",
+        },
+        { label: "Or call your branch", href: "#contact" },
       ],
     },
     {
       title: "Social",
-      links: [
-        { label: "Facebook", href: "https://facebook.com/" },
-        { label: "Instagram", href: "https://instagram.com/" },
-        { label: "YouTube", href: "https://youtube.com/" },
-        { label: "Twitter", href: "https://x.com/" },
-        { label: "LinkedIn", href: "https://linkedin.com/" },
-      ],
+      links: [{ label: "Instagram", href: brand.instagram }],
     },
   ],
-  wordmark: "Plated",
+  wordmark: "Saffron Mandi",
+  ghostmark: "Saffron", // huge ghosted mark behind the footer — keep it short
   welcome: "Welcome you",
-  copyright: "© 2026 Plated.",
+  copyright: "© 2026 Saffron Mandi.",
   credit: "Design by HusterX",
 };

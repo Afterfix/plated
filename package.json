@@ -1,9 +1,9 @@
 {
-  "name": "Plated-restaurant-template",
+  "name": "saffron-mandi-site",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Plated — a food & restaurant landing page. Vite + React + Tailwind CSS.",
+  "description": "Saffron Mandi — Arabic mandi restaurant, 4 branches in Kerala. Vite + React + Tailwind CSS.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

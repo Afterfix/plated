@@ -19,8 +19,8 @@
     overflow-x: clip;
   }
   ::selection {
-    background: #d43539;
-    color: #efeee9;
+    background: #d4a343;
+    color: #0a0908;
   }
 }
 
@@ -29,19 +29,20 @@
     @apply mx-auto w-full max-w-container px-5 sm:px-8;
   }
 
-  /* the deep-red vertical-stripe surface used by hero / nav / footer */
-  .stripes-red {
-    background-color: #9c1119;
+  /* black vertical-stripe surface used by the footer — the stripes are gold
+     now, and kept very low alpha so they read as a sheen, not a pattern */
+  .stripes-dark {
+    background-color: #0a0908;
     background-image: repeating-linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.5) 0 6px,
+      rgba(212, 163, 67, 0.07) 0 6px,
       transparent 10px 32px
     );
   }
-  /* hero surface — matches the logo: solid warm red + a faint concentric
-     "plate rim" and a soft light bloom / edge vignette */
+  /* hero surface — matches the logo: black ground, a warm gold bloom and a
+     faint concentric "plate rim" picked out in gold */
   .hero-bg {
-    background-color: #7c1712;
+    background-color: #0a0908;
   }
   .hero-bg::before {
     content: "";
@@ -51,43 +52,69 @@
     background:
       radial-gradient(
         130% 95% at 50% 30%,
-        rgba(213, 53, 47, 0.35),
-        transparent 60%
+        rgba(212, 163, 67, 0.16),
+        transparent 62%
       ),
       radial-gradient(
         circle 500px at 50% 52%,
         transparent 0 300px,
-        rgba(240, 216, 188, 0.14) 302px 305px,
+        rgba(212, 163, 67, 0.16) 302px 305px,
         transparent 308px 372px,
-        rgba(240, 216, 188, 0.22) 375px 379px,
+        rgba(212, 163, 67, 0.26) 375px 379px,
         transparent 382px
       ),
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.28),
+        rgba(0, 0, 0, 0.45),
         rgba(0, 0, 0, 0) 22%,
         rgba(0, 0, 0, 0) 62%,
-        rgba(0, 0, 0, 0.4)
+        rgba(0, 0, 0, 0.55)
       );
   }
 
-  /* red cursive eyebrow */
+  /* gold cursive eyebrow */
   .eyebrow {
-    @apply inline-block font-script text-3xl leading-none text-chili sm:text-4xl;
+    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    @apply inline-block text-3xl leading-none text-gold-deep sm:text-4xl;
   }
 
-  /* giant holey Rubik Moonrocks title */
+  /* giant section title in the custom Arabic script */
   .holey-title {
-    @apply font-holey uppercase text-ink;
+    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    @apply uppercase text-ink;
     font-size: clamp(2.6rem, 8.5vw, 7.5rem);
     line-height: 0.9;
     letter-spacing: 0.01em;
   }
 
-  .holey-hero {
-    @apply font-holey uppercase;
-    font-size: clamp(4rem, 20vw, 17rem);
-    line-height: 0.8;
+  .hero-script-title {
+    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-size: clamp(4.2rem, 13vw, 12.5rem);
+    line-height: 0.72;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    transform: scaleY(1.08);
+  }
+
+  .brand-wordmark {
+    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-transform: none;
+  }
+
+  .hero-hello {
+    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-size: clamp(2.9rem, 8vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
   }
 
   .btn {
@@ -95,7 +122,7 @@
       uppercase tracking-[0.06em] transition duration-200 ease-out;
   }
   .btn-primary {
-    @apply btn bg-chili text-cream hover:-translate-y-0.5 hover:bg-chili-deep hover:shadow-xl hover:shadow-chili/25;
+    @apply btn bg-gold text-onyx hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-xl hover:shadow-gold/25;
   }
   .btn-ink {
     @apply btn bg-ink text-cream hover:-translate-y-0.5 hover:bg-black;
@@ -106,13 +133,13 @@
 
   .field {
     @apply w-full rounded-2xl border border-ink/15 bg-white/70 px-5 py-4 text-base text-ink
-      placeholder:text-muted/60 outline-none transition focus:border-chili focus:bg-white
-      focus:ring-2 focus:ring-chili/15;
+      placeholder:text-muted/60 outline-none transition focus:border-gold-deep focus:bg-white
+      focus:ring-2 focus:ring-gold/20;
   }
 
-  /* dashed red-outline card (Why-us + Chefs + Contact form) */
+  /* dashed gold-outline card (Why-us + Chefs + Contact form) */
   .card-dashed {
-    @apply rounded-[26px] border-2 border-dashed border-chili/55 bg-white/45;
+    @apply rounded-[26px] border-2 border-dashed border-gold-deep/50 bg-white/45;
   }
 
   /* stacked-scroll panels: each pins, the next rises up and layers over it */
@@ -142,7 +169,7 @@
     flex-direction: column;
     justify-content: safe center;
     scrollbar-width: thin;
-    scrollbar-color: rgba(212, 53, 57, 0.55) transparent;
+    scrollbar-color: rgba(212, 163, 67, 0.55) transparent;
   }
   .panel-scroll::-webkit-scrollbar {
     width: 9px;
@@ -151,32 +178,42 @@
     background: transparent;
   }
   .panel-scroll::-webkit-scrollbar-thumb {
-    background: rgba(212, 53, 57, 0.5);
+    background: rgba(212, 163, 67, 0.5);
     border-radius: 999px;
   }
   .panel-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(212, 53, 57, 0.75);
+    background: rgba(212, 163, 67, 0.75);
   }
-  /* the hero + the disc panel must not clip (floaters / overhanging disc) */
-  .panel-hero,
-  .panel-overhang {
+  /* the hero must not clip its garnish floaters */
+  .panel-hero {
     overflow: visible;
   }
-  .panel-hero .panel-scroll,
-  .panel-overhang .panel-scroll {
+  .panel-hero .panel-scroll {
     overflow: visible;
   }
   .panel-cover {
-    /* a short hold on the previous section before this one rises to cover it */
-    margin-top: 10vh;
     box-shadow:
       0 -1px 0 1px rgba(18, 17, 17, 0.04),
       0 -26px 46px -18px rgba(18, 17, 17, 0.5);
   }
-  /* the disc panel sits right against the hero (no hold above it) */
-  .panel-overhang {
-    margin-top: 0;
+
+  /* the middle page: one continuous, normal-flow block. It layers up over the
+     pinned hero as you scroll in (the hero stays reachable behind it). */
+  .page-block {
+    position: relative;
+    margin-top: 7vh; /* brief hero-only hold before the page rises */
+    color: #0a0908;
   }
+  /* the footer sits a little over the end of the page block — its rounded top
+     + upward shadow read as a layer arriving over the last section */
+  .page-footer {
+    margin-top: -3rem;
+  }
+}
+
+/* small overlap on mobile too */
+.page-footer {
+  margin-top: -1.25rem;
 }
 
 @layer utilities {
@@ -246,13 +283,13 @@
   /* outlined display words for the marquee bands */
   .word-stroke {
     color: transparent;
-    -webkit-text-stroke: 2px #d43539;
+    -webkit-text-stroke: 2px #d4a343;
   }
 
   /* thin themed scrollbar for the menu list when it overflows */
   .menu-scroll {
     scrollbar-width: thin;
-    scrollbar-color: rgba(212, 53, 57, 0.6) transparent;
+    scrollbar-color: rgba(212, 163, 67, 0.6) transparent;
   }
   .menu-scroll::-webkit-scrollbar {
     width: 8px;
@@ -261,11 +298,11 @@
     background: transparent;
   }
   .menu-scroll::-webkit-scrollbar-thumb {
-    background: rgba(212, 53, 57, 0.55);
+    background: rgba(212, 163, 67, 0.55);
     border-radius: 999px;
   }
   .menu-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(212, 53, 57, 0.8);
+    background: rgba(212, 163, 67, 0.8);
   }
 }
 

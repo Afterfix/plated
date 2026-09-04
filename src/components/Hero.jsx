@@ -8,7 +8,7 @@ function HoleyWord({ text }) {
     return () => clearTimeout(t)
   }, [])
   return (
-    <h1 className="holey-hero text-cream">
+    <h1 className="hero-script-title text-cream">
       {text.split('').map((ch, i) => (
         <span key={i} className={`word ${play ? 'play' : ''}`} style={{ '--word-delay': `${i * 70}ms` }}>
           {ch}
@@ -23,16 +23,16 @@ export default function Hero() {
     <section id="top" className="hero-bg relative text-cream">
       {/* clip layer for the bowl + floaters + type */}
       <div className="relative overflow-hidden">
-        <div className="container-x relative flex min-h-[100svh] flex-col items-center justify-center pb-28 pt-24 text-center">
+        <div className="container-x relative flex min-h-[100svh] flex-col items-center justify-center pb-28 pt-28 text-center">
           {/* curry bowl — stays centred; slow constant spin (inner img) plus
               extra rotation driven by scroll (outer div) */}
-          <div className="pointer-events-none absolute left-1/2 top-[72%] -translate-x-1/2 -translate-y-1/2">
+          <div className="pointer-events-none absolute left-1/2 top-[92%] -translate-x-1/2 -translate-y-1/2">
             <div style={{ transform: 'rotate(var(--scroll-deg, 0deg))' }} className="will-change-transform">
               <img
                 src={hero.bowl}
                 alt=""
                 aria-hidden="true"
-                className="animate-spin-slowest w-[min(84vw,640px)] max-w-none drop-shadow-2xl"
+                className="animate-spin-slowest w-[min(100vw,640px)] max-w-none drop-shadow-10xl"
                 loading="eager"
               />
             </div>
@@ -59,18 +59,18 @@ export default function Hero() {
             </span>
           ))}
 
-          <p className="relative z-20 -mb-[0.42em] font-script text-[3.75rem] leading-none text-sun drop-shadow-[0_5px_0_rgba(0,0,0,0.12)] sm:text-[9rem]">
-            {hero.hello}
-          </p>
-
-          <div className="relative z-10">
+          <div className="relative z-10 -mt-2">
             <HoleyWord text={hero.title} />
           </div>
 
-          <p className="relative z-10 mt-4 max-w-[22ch] font-display text-xl uppercase tracking-wide text-cream sm:text-2xl">
+          <p className="hero-hello relative z-20 mt-[-0.12em] text-gold drop-shadow-[0_5px_0_rgba(0,0,0,0.4)]">
+            {hero.hello}
+          </p>
+
+          <p className="relative z-10 mt-10 max-w-[22ch] font-display text-xl uppercase tracking-wide text-cream sm:mt-12 sm:text-4xl">
             {hero.sub}
           </p>
-          <p className="relative z-10 mt-1 text-sm font-medium tracking-wide text-cream/70 sm:text-base">
+          <p className="relative z-10 mt-2 text-sm font-medium tracking-wide text-cream/70 sm:text-base">
             {hero.tags}
           </p>
         </div>

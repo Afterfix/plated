@@ -6,18 +6,227 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#7C1712" />
+    <meta name="theme-color" content="#0A0908" />
     <meta
       name="description"
-      content="Plated — a food & restaurant template. Quality ingredients, vibrant recipes, and a passion for great Arabian food."
+      content="Saffron Mandi — authentic Arabic mandi cooked over charcoal in the traditional kuzhi pit. Chicken, beef and mutton mandhi, al faham and grills, at four branches across Kerala: Mannarkkad, Ottappalam, Alanallur and Kottayam."
     />
+
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:site_name" content="Saffron Mandi" />
+    <meta
+      property="og:title"
+      content="Saffron Mandi — Authentic Arabic Mandi in Kerala"
+    />
+    <meta
+      property="og:description"
+      content="Charcoal kuzhi mandhi, al faham and grills. Four branches across Palakkad and Kottayam."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- TODO: add og:image + og:url once the domain and brand photography exist -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Parisienne&family=Roboto:wght@700;900&family=Rubik+Moonrocks&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Bebas+Neue&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Kaushan+Script&family=Parisienne&family=Roboto:wght@700;900&family=Rubik+Moonrocks&family=Samarkan&display=swap"
       rel="stylesheet"
     />
-    <title>Plated — Food &amp; Restaurant</title>
+    <style>
+      @font-face {
+        font-family: "Hari Raya Arabic";
+        src: url("/src/assets/HariRayaArabic-Regular.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+    <title>Saffron Mandi — Authentic Arabic Mandi in Kerala</title>
+
+    <!--
+      Local-SEO markup: one Restaurant node per branch, all pointing at the same
+      parent Organization. `aggregateRating` is deliberately absent — Google
+      penalises self-serving review markup that wasn't collected on your own
+      site. Alanallur has no published phone or hours yet, so it carries neither.
+      Update the phone/hours here whenever src/data/content.js changes.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "#saffron-mandi",
+            "name": "Saffron Mandi",
+            "slogan": "Experience the true Arabic Mandi",
+            "sameAs": ["https://www.instagram.com/saffron_mandi/"]
+          },
+          {
+            "@type": "Restaurant",
+            "name": "Saffron Mandi — Mannarkkad",
+            "branchOf": { "@id": "#saffron-mandi" },
+            "servesCuisine": ["Arabic", "Yemeni", "Middle Eastern"],
+            "priceRange": "₹₹",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Credit Card, UPI",
+            "telephone": "+919745000462",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Kunthipuzha Road, Kunthipuzha",
+              "addressLocality": "Mannarkkad",
+              "addressRegion": "Kerala",
+              "postalCode": "678583",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 10.9903908,
+              "longitude": 76.441986
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "11:00",
+                "closes": "23:30"
+              }
+            ],
+            "amenityFeature": [
+              {
+                "@type": "LocationFeatureSpecification",
+                "name": "Free parking",
+                "value": true
+              },
+              {
+                "@type": "LocationFeatureSpecification",
+                "name": "Wheelchair accessible",
+                "value": true
+              },
+              {
+                "@type": "LocationFeatureSpecification",
+                "name": "Takeaway",
+                "value": true
+              },
+              {
+                "@type": "LocationFeatureSpecification",
+                "name": "Delivery",
+                "value": true
+              }
+            ],
+            "acceptsReservations": true
+          },
+          {
+            "@type": "Restaurant",
+            "name": "Saffron Mandi — Ottappalam",
+            "branchOf": { "@id": "#saffron-mandi" },
+            "servesCuisine": ["Arabic", "Yemeni", "Middle Eastern"],
+            "priceRange": "₹₹",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Credit Card, UPI",
+            "telephone": "+917594000426",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Door 24/86-2, East Ottappalam",
+              "addressLocality": "Ottappalam",
+              "addressRegion": "Kerala",
+              "postalCode": "679101",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 10.7735537,
+              "longitude": 76.3874567
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "11:00",
+                "closes": "23:30"
+              }
+            ],
+            "acceptsReservations": true
+          },
+          {
+            "@type": "Restaurant",
+            "name": "Saffron Mandi — Alanallur",
+            "branchOf": { "@id": "#saffron-mandi" },
+            "servesCuisine": ["Arabic", "Yemeni", "Middle Eastern"],
+            "priceRange": "₹₹",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Credit Card, UPI",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Mannarkkad Road, opposite the Indian Oil pump",
+              "addressLocality": "Alanallur",
+              "addressRegion": "Kerala",
+              "postalCode": "678601",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 11.007173,
+              "longitude": 76.3511714
+            },
+            "acceptsReservations": true
+          },
+          {
+            "@type": "Restaurant",
+            "name": "Saffron Mandi — Kottayam",
+            "branchOf": { "@id": "#saffron-mandi" },
+            "servesCuisine": ["Arabic", "Yemeni", "Middle Eastern"],
+            "priceRange": "₹₹",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Credit Card, UPI",
+            "telephone": "+918943000219",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "MC Road, Nagampadam",
+              "addressLocality": "Kottayam",
+              "addressRegion": "Kerala",
+              "postalCode": "686006",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 9.5999475,
+              "longitude": 76.5303995
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "11:30",
+                "closes": "23:30"
+              }
+            ],
+            "acceptsReservations": true
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

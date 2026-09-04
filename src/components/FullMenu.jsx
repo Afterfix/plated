@@ -25,6 +25,7 @@ export default function FullMenu() {
 
       <div className="mt-8 text-center">
         <a href="#contact" className="btn-primary">Reserve your table</a>
+        {menu.note ? <p className="mt-4 text-sm text-ink">{menu.note}</p> : null}
       </div>
     </section>
   )

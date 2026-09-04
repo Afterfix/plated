@@ -46,15 +46,3 @@ export default function Icon({ name, className = 'h-5 w-5', strokeWidth = 1.7 })
     </svg>
   )
 }
-
-export function Stars({ n = 5, className = 'h-4 w-4' }) {
-  return (
-    <span className="inline-flex text-sun">
-      {Array.from({ length: n }).map((_, i) => (
-        <svg key={i} viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
-          <path d="m12 3 2.9 6 6.6.9-4.8 4.5 1.2 6.6L12 18l-5.9 3 1.2-6.6L2.5 9.9 9 9l3-6Z" />
-        </svg>
-      ))}
-    </span>
-  )
-}

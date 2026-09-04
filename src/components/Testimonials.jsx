@@ -1,12 +1,12 @@
 import { testimonials } from '../data/content.js'
 import SectionHeading from './SectionHeading.jsx'
 import Marquee from './Marquee.jsx'
-import Icon, { Stars } from './Icon.jsx'
+import Icon from './Icon.jsx'
 
 function ReviewCard({ r }) {
   return (
-    <article className="flex w-[330px] flex-col gap-4 rounded-[24px] bg-ink p-7 text-cream sm:w-[400px]">
-      <Icon name="quote" className="h-8 w-8 text-chili" />
+    <article className="flex w-[330px] flex-col gap-4 rounded-[24px] bg-onyx p-7 text-cream sm:w-[400px]">
+      <Icon name="quote" className="h-8 w-8 text-gold" />
       <p className="text-sm leading-relaxed text-cream/85">{r.quote}</p>
       <div className="mt-auto flex items-center gap-3 border-t border-cream/10 pt-4">
         <img src={r.avatar} alt={r.name} loading="lazy" className="h-11 w-11 rounded-full object-cover" />
@@ -14,7 +14,6 @@ function ReviewCard({ r }) {
           <p className="font-display text-xl uppercase leading-none">{r.name}</p>
           <p className="text-xs text-cream/60">{r.role}</p>
         </div>
-        <Stars className="h-3.5 w-3.5" />
       </div>
     </article>
   )

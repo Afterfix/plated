@@ -1,11 +1,10 @@
-import { Stars } from "./Icon.jsx";
 
 function Badge({ label }) {
   if (!label) return null;
   const hot = label.toLowerCase() === "hot";
   return (
     <span
-      className={`absolute left-1 top-1 grid h-11 w-11 place-items-center rounded-full font-display text-m uppercase leading-none text-cream ${hot ? "bg-chili" : "bg-leaf"}`}
+      className={`absolute left-1 top-1 grid h-11 w-11 place-items-center rounded-full font-display text-m uppercase leading-none ${hot ? "bg-onyx text-gold" : "bg-gold text-onyx"}`}
     >
       {label}
     </span>
@@ -13,8 +12,8 @@ function Badge({ label }) {
 }
 
 /**
- * A dish the Plated way: a round bowl photo sitting straight on the
- * background (no card), name in Bebas, price in red, grey description.
+ * A dish: a round bowl photo sitting straight on the background (no card),
+ * name in Bebas, price in red, grey description.
  * `layout="stack"` = photo above text (Popular row);
  * `layout="row"` = photo beside text (menu grid).
  */
@@ -49,9 +48,9 @@ export default function DishItem({
           : "mt-4 flex flex-col items-center text-center"
       }
     >
-      {showRating ? (
-        <span className="mb-2 inline-flex items-center gap-1.5 rounded-lg bg-ink px-2.5 py-1 text-cream">
-          <Stars className="h-3 w-3" />
+      {/* only shows once a dish carries a real rating — no invented scores */}
+      {showRating && dish.rating ? (
+        <span className="mb-2 inline-flex items-center gap-1.5 rounded-lg bg-onyx px-2.5 py-1 text-cream">
           <span className="font-display text-sm leading-none">
             {dish.rating}
           </span>
@@ -65,11 +64,11 @@ export default function DishItem({
         </h3>
       </div>
       {dish.price ? (
-        <p className="mt-1 font-display text-2xl leading-none text-chili sm:text-3xl">
+        <p className="mt-1 font-display text-2xl leading-none text-gold-deep sm:text-3xl">
           {dish.price}
         </p>
       ) : null}
-      <p className="mt-2 max-w-[26ch] text-sm leading-relaxed text-muted">
+      <p className="mt-2 max-w-[26ch] text-sm leading-relaxed text-ink">
         {dish.desc}
       </p>
     </div>

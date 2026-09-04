@@ -10,12 +10,13 @@ function ChefCard({ c }) {
   return (
     <article className="card-dashed group relative bg-white/60">
       <div className="relative overflow-hidden rounded-t-[24px]">
-        <img src={c.photo} alt={c.name} loading="lazy" className="aspect-[3/4] w-full object-cover object-top" />
+        <img src={c.photo} alt={c.name} loading="lazy" className="aspect-[3/4] w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
 
-        {/* hover: red bio panel drops over the photo, tilted a few degrees off
-            the card, description reversed out in white — fades on leave */}
-        <div className="pointer-events-none absolute inset-0 flex flex-col justify-end rounded-[18px] bg-chili p-6 text-cream opacity-0 [transform:rotate(3deg)_translateY(10px)] transition-all duration-500 group-hover:opacity-100 group-hover:[transform:rotate(3deg)_translateY(0)]">
-          <p className="text-sm leading-relaxed">{c.bio}</p>
+        {/* hover: black bio panel overlays the photo container cleanly */}
+        <div className="pointer-events-none absolute inset-0 flex flex-col justify-center bg-onyx/90 p-6 text-cream opacity-0 backdrop-blur-xs transition-opacity duration-300 ease-out group-hover:opacity-100">
+          <p className="font-display text-xl uppercase text-chili">{c.name}</p>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-cream/70">{c.cuisine}</p>
+          <p className="mt-3 text-sm leading-relaxed text-cream/90">{c.bio}</p>
         </div>
       </div>
 

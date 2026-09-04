@@ -1,5 +1,4 @@
 import Reveal from './Reveal.jsx'
-import Sprout from './Sprout.jsx'
 
 /**
  * Centered header used across the site:
@@ -17,14 +16,12 @@ export default function SectionHeading({
   className = '',
 }) {
   const titleColor = tone === 'cream' ? 'text-cream' : 'text-ink'
-  const blurbColor = tone === 'cream' ? 'text-cream/75' : 'text-muted'
+  const blurbColor = tone === 'cream' ? 'text-cream/75' : 'text-ink'
 
   return (
     <div className={`flex flex-col items-center text-center ${className}`}>
       <Reveal className="flex items-center gap-3">
-        <Sprout />
-        <span className="eyebrow">{eyebrow}</span>
-        <Sprout flip />
+        
       </Reveal>
 
       <Reveal as="h2" delay={80} className={`holey-title relative mt-3 max-w-[18ch] ${titleColor} ${titleClassName}`}>

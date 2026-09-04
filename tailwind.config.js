@@ -4,15 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: "#EFEEE9", // light section background
+        cream: "#F1EDE3", // light section background (warmed slightly for gold)
         paper: "#F1F1F1", // alternate light background
+        onyx: "#0A0908", // black surfaces — hero, navbar, footer, badges
         ink: "#121111", // near-black text + dark cards
-        chili: {
-          DEFAULT: "#D43539", // the Plated red — hero / nav / footer / accents
-          deep: "#B2271B",
+        // Gold, sampled off the Saffron Mandi mark. Two stops, and they are not
+        // interchangeable: `gold` is a mid-tone that sings on black but only
+        // reaches ~2:1 on cream, so on light backgrounds use `gold.deep`, and
+        // only for large type (eyebrows, prices, names) — never body copy.
+        gold: {
+          DEFAULT: "#D4A343", // on black: buttons, badges, stars, rings
+          light: "#EBD08A", // highlight + hover on dark
+          deep: "#8C6A1E", // accents on cream — large text only (4.2:1)
         },
-        leaf: "#00942A", // "New" badge + sprout doodles
-        sun: "#FFE102", // "Hello", scroll disc, dashed rings
         muted: "#636363",
       },
       fontFamily: {
@@ -22,6 +26,8 @@ export default {
         display: ['"Bebas Neue"', "Oswald", "Impact", "sans-serif"],
         // red cursive eyebrows + "Hello" + "Welcome You"
         script: ["Parisienne", '"Brush Script MT"', "cursive"],
+        // main hero title in a more calligraphic, luxury Arabic-inspired style
+        heroScript: ['"Aref Ruqaa"', '"Noto Nastaliq Urdu"', '"Segoe Script"', "serif"],
         sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "sans-serif"],
         wordmark: ["Roboto", "Inter", "system-ui", "sans-serif"],
       },

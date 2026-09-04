@@ -48,9 +48,9 @@ export default function App() {
     }
   }, [])
 
-  // In-page anchor scrolling. On desktop the middle sections live inside one
-  // pinned, internally-scrolling pane, so jump the page to pin that pane and
-  // then scroll inside it to the target section.
+  // In-page anchor scrolling. `offsetTop` gives an element's natural layout
+  // position (it ignores sticky offsets), so summing the offsetParent chain
+  // lands on the right spot whatever is currently pinned.
   useEffect(() => {
     const onClick = (e) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return
@@ -62,30 +62,11 @@ export default function App() {
       e.preventDefault()
       document.body.style.overflow = '' // release any mobile-drawer scroll lock
 
-      const scroller = el.closest('.panel-scroll')
-      const internal = scroller && scroller.scrollHeight - scroller.clientHeight > 4
-
-      if (internal) {
-        const panel = scroller.closest('.panel')
-        const prev = panel.style.position
-        panel.style.position = 'static'
-        const panelTop = panel.getBoundingClientRect().top + window.scrollY
-        panel.style.position = prev
-        const secTop =
-          el.getBoundingClientRect().top -
-          scroller.getBoundingClientRect().top +
-          scroller.scrollTop
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: Math.max(0, panelTop - 2), behavior: 'smooth' })
-          scroller.scrollTo({ top: Math.max(0, secTop - 6), behavior: 'smooth' })
-        })
-      } else {
-        let top = 0
-        for (let n = el; n; n = n.offsetParent) top += n.offsetTop
-        requestAnimationFrame(() =>
-          window.scrollTo({ top: Math.max(0, top - 2), behavior: 'smooth' }),
-        )
-      }
+      let top = 0
+      for (let n = el; n; n = n.offsetParent) top += n.offsetTop
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: Math.max(0, top - 2), behavior: 'smooth' }),
+      )
       history.replaceState(null, '', id === 'top' ? location.pathname : `#${id}`)
     }
     document.addEventListener('click', onClick)
@@ -94,27 +75,26 @@ export default function App() {
 
   return (
     <>
-      <div className="relative overflow-x-clip">
+      <div className="relative">
         <Navbar />
 
         {/* Hero — pins; the page block below rises up and layers over it */}
-        <div className="panel panel-hero bg-chili" style={{ zIndex: 1 }}>
+        <div className="panel panel-hero bg-onyx" style={{ zIndex: 1 }}>
           <div className="panel-scroll">
             <Hero />
           </div>
         </div>
 
-        {/* One continuous page, layered over the hero */}
-        <div className="panel panel-cover bg-cream" style={{ zIndex: 2 }}>
-          <div className="panel-scroll">
-            {middle.map((C, i) => (
-              <C key={i} />
-            ))}
-          </div>
+        {/* One continuous page — layers over the hero, and (once you've scrolled
+            all the way through it) sticks so the footer can rise over it */}
+        <div className="page-block panel-cover bg-cream text-ink" style={{ zIndex: 2 }}>
+          {middle.map((C, i) => (
+            <C key={i} />
+          ))}
         </div>
 
-        {/* Footer — layered over the page */}
-        <div className="panel-cover relative bg-chili" style={{ zIndex: 3 }}>
+        {/* Footer — layers over the end of the page block */}
+        <div className="panel-cover page-footer relative bg-onyx text-white" style={{ zIndex: 3 }}>
           <Footer />
         </div>
       </div>

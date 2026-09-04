@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { brand, navLinks } from '../data/content.js'
-import logo from '../assets/plated-logo.jpg'
 
+// `brand.logo` is null until the owner supplies a mark — the wordmark stands
+// alone until then rather than carrying someone else's logo.
 const Wordmark = ({ className = '' }) => (
   <a href="#top" className={`flex items-center gap-2 sm:gap-2.5 ${className}`}>
-    <img
-      src={logo}
-      alt=""
-      className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-cream/40 sm:h-9 sm:w-9"
-    />
-    <span className="font-wordmark text-xl font-black uppercase tracking-tight sm:text-2xl">
+    {brand.logo ? (
+      <img
+        src={brand.logo}
+        alt=""
+        className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-gold/30 sm:h-9 sm:w-9"
+      />
+    ) : null}
+    <span className="brand-wordmark text-xl sm:text-2xl">
       {brand.name}
     </span>
   </a>
@@ -23,6 +26,7 @@ const Arrow = () => (
 
 export default function Navbar() {
   const [collapsed, setCollapsed] = useState(false)
+  const [overHero, setOverHero] = useState(true)
   const [open, setOpen] = useState(false)
   const stopTimer = useRef(null)
 
@@ -30,11 +34,13 @@ export default function Navbar() {
     let last = window.scrollY
     const onScroll = () => {
       const y = window.scrollY
+      setOverHero(y < window.innerHeight * 0.8)
       if (y > 140 && y > last + 2) setCollapsed(true)
       last = y
       clearTimeout(stopTimer.current)
       stopTimer.current = setTimeout(() => setCollapsed(false), 240)
     }
+    setOverHero(window.scrollY < window.innerHeight * 0.8)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', onScroll)
@@ -57,7 +63,7 @@ export default function Navbar() {
           collapsed ? 'lg:max-h-0 lg:opacity-0' : ''
         }`}
       >
-        <div className="bg-[#7c1712] text-cream">
+        <div className={`bg-transparent ${overHero ? 'text-cream' : 'text-ink'}`}>
           <nav className="container-x flex h-16 items-center justify-between gap-3 sm:h-[74px] sm:gap-4">
             <Wordmark />
 
@@ -66,7 +72,7 @@ export default function Navbar() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="font-wordmark text-[15px] font-bold text-cream/90 transition-opacity hover:opacity-70"
+                    className={`font-wordmark text-[15px] font-bold transition-opacity hover:opacity-70 ${overHero ? 'text-cream/90' : 'text-ink'}`}
                   >
                     {l.label}
                   </a>
@@ -83,7 +89,7 @@ export default function Navbar() {
                 aria-label="Menu"
                 aria-expanded={open}
                 onClick={() => setOpen(true)}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-cream/30 sm:h-11 sm:w-11 lg:hidden"
+                className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border sm:h-11 sm:w-11 lg:hidden ${overHero ? 'border-cream/30' : 'border-ink/30'}`}
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                   <path d="M4 7h16M4 12h16M4 17h16" />

@@ -18,21 +18,38 @@ function BranchCard({ b, active, onSelect }) {
       onClick={onSelect}
       className={`flex min-w-[230px] max-w-[250px] shrink-0 snap-start flex-col gap-1.5 rounded-[22px] border-2 border-dashed p-4 text-left transition ${
         active
-          ? "border-chili bg-chili/8 ring-2 ring-chili/30"
-          : "border-chili/45 bg-white/40 hover:border-chili/70"
+          ? "border-gold-deep bg-gold/10 ring-2 ring-gold/30"
+          : "border-gold-deep/45 bg-white/40 hover:border-gold-deep/70"
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <h4 className="font-display text-xl uppercase leading-none text-chili">{b.name}</h4>
-        <span className="flex shrink-0 items-center gap-1 rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-cream">
-          <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 text-sun" fill="currentColor" aria-hidden="true">
-            <path d="m12 3 2.9 6 6.6.9-4.8 4.5 1.2 6.6L12 18l-5.9 3 1.2-6.6L2.5 9.9 9 9l3-6Z" />
-          </svg>
-          {b.rating}
-        </span>
+        <h4 className="font-display text-xl uppercase leading-none text-gold-deep">{b.name}</h4>
+        {/* star badge only where a branch carries a rating we're entitled to show */}
+        {b.rating ? (
+          <span className="flex shrink-0 items-center gap-1 rounded-full bg-onyx px-2 py-0.5 text-[11px] font-semibold text-cream">
+            <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 text-gold" fill="currentColor" aria-hidden="true">
+              <path d="m12 3 2.9 6 6.6.9-4.8 4.5 1.2 6.6L12 18l-5.9 3 1.2-6.6L2.5 9.9 9 9l3-6Z" />
+            </svg>
+            {b.rating}
+          </span>
+        ) : null}
       </div>
-      <p className="text-xs text-muted">{b.area}</p>
+      <p className="text-xs text-ink">{b.area}</p>
       <p className="text-xs leading-relaxed text-ink/70">{b.note}</p>
+      {b.hours ? (
+        <p className="text-xs font-semibold text-ink/60">{b.hours}</p>
+      ) : null}
+      {b.maps ? (
+        <a
+          href={b.maps}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="text-xs font-semibold text-ink/70 underline decoration-dotted underline-offset-2 hover:opacity-70"
+        >
+          Get directions
+        </a>
+      ) : null}
       {b.phone ? (
         <span className="mt-1 flex items-center gap-3 text-xs font-semibold">
           <a
@@ -40,14 +57,14 @@ function BranchCard({ b, active, onSelect }) {
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1 text-[#1EA952] hover:opacity-70"
+            className="inline-flex items-center gap-1 text-ink/75 hover:opacity-70"
           >
             <WaIcon className="h-3.5 w-3.5" /> WhatsApp
           </a>
           <a
             href={telHref(b.phone)}
             onClick={(e) => e.stopPropagation()}
-            className="text-chili hover:opacity-70"
+            className="text-gold-deep hover:opacity-70"
           >
             {b.phone}
           </a>
@@ -60,13 +77,19 @@ function BranchCard({ b, active, onSelect }) {
 export default function Contact() {
   const [branch, setBranch] = useState(0);
   const selected = contact.branches[branch];
+  // Alanallur publishes no phone number yet, so messages for a branch without
+  // one go to the first branch that has one — and say which branch they're for.
+  const target = selected.phone
+    ? selected
+    : contact.branches.find((b) => b.phone) || selected;
 
   function handleSubmit(e) {
     e.preventDefault();
     if (e.target.website?.value) return; // honeypot
     const f = e.target;
     const msg = [
-      `Hi ${selected.name}!`,
+      `Hi ${target.name}!`,
+      target !== selected && `Enquiry about the ${selected.name} branch`,
       f.name.value && `Name: ${f.name.value}`,
       f.email.value && `Email: ${f.email.value}`,
       f.mobile.value && `Mobile: ${f.mobile.value}`,
@@ -75,11 +98,11 @@ export default function Contact() {
     ]
       .filter(Boolean)
       .join("\n");
-    window.open(waHref(selected.phone || contact.branches[0].phone, msg), "_blank", "noopener");
+    window.open(waHref(target.phone, msg), "_blank", "noopener");
   }
 
   return (
-    <section id="contact" className="container-x scroll-mt-28 py-10 sm:py-12">
+    <section id="contact" className="container-x scroll-mt-28 rounded-[28px] bg-white py-10 sm:py-12">
       <SectionHeading
         eyebrow={contact.eyebrow}
         title={contact.title}
@@ -92,8 +115,8 @@ export default function Contact() {
       <div className="mt-6">
         <div className="flex items-center gap-3">
           <span className="eyebrow">Our branches</span>
-          <span className="h-px flex-1 bg-chili/25" />
-          <span className="font-display text-lg uppercase tracking-wide text-muted">
+          <span className="h-px flex-1 bg-gold-deep/30" />
+          <span className="font-display text-lg uppercase tracking-wide text-ink">
             {contact.branchesTitle} · tap to select
           </span>
         </div>
@@ -134,10 +157,10 @@ export default function Contact() {
 
           <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
-          <button type="submit" className="btn-primary mt-4 w-full !py-3 !bg-[#1EA952] hover:!bg-[#178A43]">
-            <WaIcon className="h-5 w-5" /> Send to {selected.name} on WhatsApp
+          <button type="submit" className="btn-primary mt-4 w-full !py-3">
+            <WaIcon className="h-5 w-5" /> Send to {target.name} on WhatsApp
           </button>
-          <p className="mt-2 text-center text-sm text-muted">{contact.note}</p>
+          <p className="mt-2 text-center text-sm text-ink">{contact.note}</p>
         </form>
 
         <div className="relative hidden flex-col items-center lg:flex">
@@ -147,7 +170,7 @@ export default function Contact() {
             loading="lazy"
             className="max-h-[240px] w-auto object-contain"
           />
-          <p className="mt-2 max-w-[16ch] text-center font-script text-2xl leading-tight text-chili">
+          <p className="mt-2 max-w-[16ch] text-center font-script text-2xl leading-tight text-gold-deep">
             {contact.scribble}
           </p>
         </div>

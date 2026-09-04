@@ -1,6 +1,5 @@
 import { about } from "../data/content.js";
 import Reveal from "./Reveal.jsx";
-import Sprout from "./Sprout.jsx";
 
 export default function About() {
   return (
@@ -9,13 +8,13 @@ export default function About() {
         <Reveal variant="left" className="relative mx-auto max-w-md lg:mx-0">
           <img
             src={about.image}
-            alt="A signature Plated dish"
+            alt="Mandhi rice, steamed under the meat in the charcoal pit"
             loading="lazy"
             className="aspect-square w-full rounded-full object-cover"
           />
           {/* solid red disc with dashed yellow ring */}
-          <div className="absolute -bottom-2 right-2 grid h-32 w-32 place-items-center rounded-full border-[3px] border-dashed border-sun bg-cream p-1.5 sm:h-36 sm:w-36">
-            <div className="grid h-full w-full place-items-center rounded-full bg-chili text-center text-cream">
+          <div className="absolute -bottom-2 right-2 grid h-32 w-32 place-items-center rounded-full border-[3px] border-dashed border-gold bg-cream p-1.5 sm:h-36 sm:w-36">
+            <div className="grid h-full w-full place-items-center rounded-full bg-onyx text-center text-gold">
               <span className="font-display text-xl uppercase leading-none sm:text-2xl">
                 {about.ring[0]}
                 <br />
@@ -27,12 +26,9 @@ export default function About() {
 
         <Reveal variant="right" delay={120}>
           <span className="flex items-center gap-3">
-            <Sprout />
-            <span className="eyebrow">{about.eyebrow}</span>
-            <Sprout flip />
           </span>
           <h2 className="holey-title mt-3 max-w-[12ch]">{about.title}</h2>
-          <p className="mt-6 text-base leading-relaxed text-muted sm:text-lg">
+          <p className="mt-6 text-base leading-relaxed text-ink sm:text-lg">
             {about.blurb}
           </p>
           <a href="#best-chef" className="btn-ink mt-8 w-fit">
