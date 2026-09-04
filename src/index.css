@@ -64,7 +64,14 @@
         rgba(212, 163, 67, 0.16),
         transparent 62%
       ),
-      radial-gradient(circle 500px at 50% 52%, transparent 0 300px, rgba(212, 163, 67, 0.16) 302px 305px, transparent 308px 372px, rgba(212, 163, 67, 0.26) 375px 379px, transparent 382px),
+      radial-gradient(
+        circle 500px at 50% 52%,
+        transparent 0 300px,
+        rgba(212, 163, 67, 0.16) 302px 305px,
+        transparent 308px 372px,
+        rgba(212, 163, 67, 0.26) 375px 379px,
+        transparent 382px
+      ),
       linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.45),
@@ -115,13 +122,17 @@
 
   /* gold cursive eyebrow */
   .eyebrow {
-    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-family:
+      "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan",
+      "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
     @apply inline-block text-3xl leading-none text-gold-deep sm:text-4xl;
   }
 
   /* giant section title in the custom Arabic script */
   .holey-title {
-    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-family:
+      "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan",
+      "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
     @apply uppercase text-ink;
     font-size: clamp(2.6rem, 8.5vw, 7.5rem);
     line-height: 0.9;
@@ -129,7 +140,9 @@
   }
 
   .hero-script-title {
-    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-family:
+      "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan",
+      "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
     font-size: clamp(4.2rem, 13vw, 12.5rem);
     line-height: 0.72;
     letter-spacing: -0.04em;
@@ -141,7 +154,9 @@
   }
 
   .brand-wordmark {
-    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-family:
+      "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan",
+      "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
     font-weight: 400;
     letter-spacing: -0.04em;
     line-height: 1;
@@ -149,7 +164,9 @@
   }
 
   .hero-hello {
-    font-family: "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan", "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
+    font-family:
+      "Hari Raya Arabic", "Kultum Ramadhan", "Mustopha", "Samarkan",
+      "Aref Ruqaa", "Kaushan Script", "Great Vibes", cursive;
     font-size: clamp(2.9rem, 8vw, 8.5rem);
     line-height: 0.9;
     letter-spacing: -0.04em;
@@ -303,8 +320,20 @@
   }
 
   .mask-fade-x {
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
   }
 
   /* heading produce garnish: rotate + settle once as the heading enters */
@@ -377,7 +406,7 @@
     transition: none !important;
     animation: none !important;
   }
-  [class*='animate-'] {
+  [class*="animate-"] {
     animation: none !important;
   }
 }

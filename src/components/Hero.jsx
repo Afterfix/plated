@@ -1,21 +1,25 @@
-import { useEffect, useState } from 'react'
-import { hero } from '../data/content.js'
+import { useEffect, useState } from "react";
+import { hero } from "../data/content.js";
 
 function HoleyWord({ text }) {
-  const [play, setPlay] = useState(false)
+  const [play, setPlay] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setPlay(true), 140)
-    return () => clearTimeout(t)
-  }, [])
+    const t = setTimeout(() => setPlay(true), 140);
+    return () => clearTimeout(t);
+  }, []);
   return (
     <h1 className="hero-script-title text-cream">
-      {text.split('').map((ch, i) => (
-        <span key={i} className={`word ${play ? 'play' : ''}`} style={{ '--word-delay': `${i * 70}ms` }}>
+      {text.split("").map((ch, i) => (
+        <span
+          key={i}
+          className={`word ${play ? "play" : ""}`}
+          style={{ "--word-delay": `${i * 70}ms` }}
+        >
           {ch}
         </span>
       ))}
     </h1>
-  )
+  );
 }
 
 export default function Hero() {
@@ -27,7 +31,10 @@ export default function Hero() {
           {/* curry bowl — stays centred; slow constant spin (inner img) plus
               extra rotation driven by scroll (outer div) */}
           <div className="pointer-events-none absolute left-1/2 top-[92%] -translate-x-1/2 -translate-y-1/2">
-            <div style={{ transform: 'rotate(var(--scroll-deg, 0deg))' }} className="will-change-transform">
+            <div
+              style={{ transform: "rotate(var(--scroll-deg, 0deg))" }}
+              className="will-change-transform"
+            >
               <img
                 src={hero.bowl}
                 alt=""
@@ -46,7 +53,7 @@ export default function Hero() {
               aria-hidden="true"
               className={`pointer-events-none absolute hidden will-change-transform lg:block ${f.className}`}
               style={{
-                transform: `${f.flip ? 'scaleX(-1) ' : ''}translateY(calc(var(--scroll-y, 0) * -0.28px))`,
+                transform: `${f.flip ? "scaleX(-1) " : ""}translateY(calc(var(--scroll-y, 0) * -0.28px))`,
               }}
             >
               <img
@@ -54,7 +61,7 @@ export default function Hero() {
                 alt=""
                 loading="lazy"
                 className={`animate-${f.anim} w-full drop-shadow-xl`}
-                style={{ '--float-dur': f.dur, animationDelay: f.delay }}
+                style={{ "--float-dur": f.dur, animationDelay: f.delay }}
               />
             </span>
           ))}
@@ -75,7 +82,6 @@ export default function Hero() {
           </p>
         </div>
       </div>
-
     </section>
-  )
+  );
 }
