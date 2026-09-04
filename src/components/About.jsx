@@ -25,8 +25,27 @@ export default function About() {
         </Reveal>
 
         <Reveal variant="right" delay={120}>
-          <span className="flex items-center gap-3">
-          </span>
+          {about.eyebrow ? (
+            <span className="flex items-center gap-2 sm:gap-3">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-[#28a745]"
+                aria-hidden="true"
+              >
+                <path d="M12 21c-1-3-3-5.5-5-7-2.5-1.8-5-2-5-2s1.5 3.5 4 4.5c2 1 4 2.5 5 4.5zm1-1.5c.8-1.8 2.5-3.2 4.2-4 2.2-1 4.8-1.5 4.8-1.5s-1.5 2.8-3.5 3.8c-1.8.8-3.8 1.4-4.5 3.2z" />
+              </svg>
+              <span className="eyebrow">{about.eyebrow}</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-[#28a745] -scale-x-100"
+                aria-hidden="true"
+              >
+                <path d="M12 21c-1-3-3-5.5-5-7-2.5-1.8-5-2-5-2s1.5 3.5 4 4.5c2 1 4 2.5 5 4.5zm1-1.5c.8-1.8 2.5-3.2 4.2-4 2.2-1 4.8-1.5 4.8-1.5s-1.5 2.8-3.5 3.8c-1.8.8-3.8 1.4-4.5 3.2z" />
+              </svg>
+            </span>
+          ) : null}
           <h2 className="holey-title mt-3 max-w-[12ch]">{about.title}</h2>
           <p className="mt-6 text-base leading-relaxed text-ink sm:text-lg">
             {about.blurb}

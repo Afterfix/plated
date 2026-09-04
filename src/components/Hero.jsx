@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { hero } from '../data/content.js'
+import CircularText from './CircularText.jsx'
 
 function HoleyWord({ text }) {
   const [play, setPlay] = useState(false)
@@ -75,6 +76,11 @@ export default function Hero() {
           </p>
         </div>
       </div>
+
+      <CircularText
+        text={hero.scrollText}
+        className="absolute bottom-0 left-1/2 z-30 h-40 w-40 -translate-x-1/2 translate-y-1/2 sm:h-48 sm:w-48"
+      />
     </section>
   )
 }

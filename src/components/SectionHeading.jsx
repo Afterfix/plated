@@ -1,5 +1,5 @@
 import Reveal from './Reveal.jsx'
-
+import Icon from './Icon.jsx'
 /**
  * Centered header used across the site:
  *   green sprout · red cursive eyebrow · green sprout
@@ -21,7 +21,9 @@ export default function SectionHeading({
   return (
     <div className={`flex flex-col items-center text-center ${className}`}>
       <Reveal className="flex items-center gap-3">
-        
+        <Icon name="leaf" className="h-8 w-8 text-chili" />
+        <span className="font-display text-2xl font-semibold uppercase leading-tight text-chili">{eyebrow}</span>
+        <Icon name="leaf" className="h-8 w-8 text-chili" />
       </Reveal>
 
       <Reveal as="h2" delay={80} className={`holey-title relative mt-3 max-w-[18ch] ${titleColor} ${titleClassName}`}>
