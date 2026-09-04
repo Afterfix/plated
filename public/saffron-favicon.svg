@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <clipPath id="circle">
+      <circle cx="300" cy="300" r="300" />
+    </clipPath>
+  </defs>
+  <image href="/src/assets/saffron-logo.jpg" width="600" height="600" preserveAspectRatio="xMidYMid slice" clip-path="url(#circle)" />
+  <image href="/assets/saffron-logo-wjBnB0mG.jpg" width="600" height="600" preserveAspectRatio="xMidYMid slice" clip-path="url(#circle)" />
+</svg>

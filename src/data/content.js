@@ -96,21 +96,21 @@ export const hero = {
   floaters: [
     {
       src: chiliLeft,
-      className: "left-[-5%] top-[36%] w-[200px] sm:w-[340px]",
+      className: "left-[-5%] top-[44%] w-[200px] sm:w-[340px]",
       anim: "float5",
       dur: "6s",
       delay: "0s",
     },
     {
       src: chiliRight,
-      className: "right-[-5%] top-[36%] w-[200px] sm:w-[340px]",
+      className: "right-[-5%] top-[44%] w-[200px] sm:w-[340px]",
       anim: "float2",
       dur: "7.5s",
       delay: ".7s",
     },
     {
       src: coriander,
-      className: "right-[12%] bottom-[9%] w-[90px] sm:w-[150px]",
+      className: "right-[12%] bottom-[3%] w-[90px] sm:w-[150px]",
       anim: "float10",
       dur: "8s",
       delay: "1.2s",
@@ -118,7 +118,7 @@ export const hero = {
 
     {
       src: vepp,
-      className: "left-[12%] bottom-[9%] w-[90px] sm:w-[150px]",
+      className: "left-[12%] bottom-[3%] w-[90px] sm:w-[150px]",
       anim: "float10",
       dur: "8s",
       delay: "1.2s",
